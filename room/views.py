@@ -648,10 +648,7 @@ def getMeetingInfo_week(request):
                     tmp_dict["attendee"] = data[i].attendee
                     tmp_dict["room"] = data[i].room
                     result[5][7]["meeting"].append(tmp_dict)
-    
-    
     return JsonResponse(result, safe=False)
-
 
 @csrf_exempt
 def createReminder(request):
@@ -664,6 +661,7 @@ def create_meeting(request):
     end = request.POST['end']
     attendee = request.POST['attendee']
     room = request.POST['room']
+    print(host)
     meeting = Meeting(topic=topic,
                       host=host,
                       start=start,
@@ -672,7 +670,7 @@ def create_meeting(request):
                       room=room,
                       )
     meeting.save()
-    return JsonResponse({"result":1}, safe=False)
+    return JsonResponse({"result":0}, safe=False)
 
 
 @csrf_exempt
@@ -692,4 +690,3 @@ def meeting_delete_view(request):
     meeting = Meeting.objects.get(pk=request.POST['id'])
     meeting.delete()
     return JsonResponse({'result':1})
-
