@@ -25,8 +25,6 @@ def getMeetingInfo_month(request):
         tmp["meeting"] = []
         result[i] = tmp
     
-    def add_dict(tmp_dict,index,data):
-        return tmp_dict
     # 取 meeting table 的所有資料
     data = Meeting.objects.all()
     for i in range(len(data)):
@@ -313,9 +311,348 @@ def getMeetingInfo_month(request):
                 result[31]["meeting"].append(tmp_dict)
 
     return JsonResponse(result, safe=False)
+
+
 @csrf_exempt
 def getMeetingInfo_week(request):
-    return JsonResponse({'result':1}, safe=False)
+    result = {}
+    for i in range(1,6):
+        tmp1 = {}
+        tmp1["location"] = i
+        for j in range(1,8):
+            tmp2 = {}
+            tmp2["meeting"] = []
+            tmp1[j] = tmp2
+        result[i] = tmp1
+
+    data = Meeting.objects.all()
+    for i in range(len(data)):
+        # 抓該日期的 meeting 資料 
+        if(data[i].start[5:7] == request.POST['date'][0:2]):
+            if(data[i].room == '1'):
+                if(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 0):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[1][1]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 1):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[1][2]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 2):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[1][3]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 3):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[1][4]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 4):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[1][5]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 5):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[1][6]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 6):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[1][7]["meeting"].append(tmp_dict)
+            elif(data[i].room == '2'):
+                if(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 0):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[2][1]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 1):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[2][2]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 2):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[2][3]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 3):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[2][4]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 4):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[2][5]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 5):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[2][6]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 6):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[2][7]["meeting"].append(tmp_dict)
+            elif(data[i].room == '3'):
+                if(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 0):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[3][1]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 1):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[3][2]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 2):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[3][3]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 3):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[3][4]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 4):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[3][5]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 5):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[3][6]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 6):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[3][7]["meeting"].append(tmp_dict)
+            elif(data[i].room == '4'):
+                if(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 0):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[4][1]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 1):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[4][2]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 2):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[4][3]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 3):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[4][4]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 4):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[4][5]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 5):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[4][6]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 6):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[4][7]["meeting"].append(tmp_dict)
+            elif(data[i].room == '5'):
+                if(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 0):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[5][1]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 1):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[5][2]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 2):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[5][3]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 3):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[5][4]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 4):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[5][5]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 5):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[5][6]["meeting"].append(tmp_dict)
+                elif(int(data[i].start[8:10]) == int(request.POST['date'][3:5]) + 6):
+                    tmp_dict = {}
+                    tmp_dict["topic"] = data[i].topic
+                    tmp_dict["host"] = data[i].host
+                    tmp_dict["start"] = data[i].start
+                    tmp_dict["end"] = data[i].end
+                    tmp_dict["attendee"] = data[i].attendee
+                    tmp_dict["room"] = data[i].room
+                    result[5][7]["meeting"].append(tmp_dict)
+    
+    
+    return JsonResponse(result, safe=False)
+
 
 @csrf_exempt
 def createReminder(request):
@@ -356,3 +693,4 @@ def meeting_delete_view(request):
     meeting = Meeting.objects.get(pk=request.POST['id'])
     meeting.delete()
     return JsonResponse({'result':1})
+
